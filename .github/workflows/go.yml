@@ -24,7 +24,7 @@ jobs:
       run: mv /home/runner/work/serverless-amazon-refbot/serverless-amazon-refbot /home/runner/go/src/github.com/AlessandroPomponio
 
     - name: Build
-      run: go build -v .
+      run: go build -v /home/runner/go/src/github.com/AlessandroPomponio
       
   test:
     name: Test

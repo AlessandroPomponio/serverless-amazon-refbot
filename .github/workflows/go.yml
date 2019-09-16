@@ -18,9 +18,10 @@ jobs:
       id: go
 
     - name: Check out code into the Go module directory
-      env:
-        GITHUB_WORKSPACE: /home/runner/go/src/github.com/AlessandroPomponio/
       uses: actions/checkout@v1
+      
+    - name: Move repository to GOPATH
+      run: mv /home/runner/work/serverless-amazon-refbot/serverless-amazon-refbot /home/runner/go/src/github.com/AlessandroPomponio
 
     - name: Build
       run: go build -v .

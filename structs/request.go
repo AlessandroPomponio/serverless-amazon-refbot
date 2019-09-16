@@ -1,3 +1,9 @@
+// Copyright 2019 Alessandro Pomponio. All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
+// Package structs contains the definition of the
+// structures for the database.
 package structs
 
 import (

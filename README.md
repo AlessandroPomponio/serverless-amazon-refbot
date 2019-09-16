@@ -1,5 +1,9 @@
 # Go Serverless Amazon Refbot
 
+[![Build Status](https://travis-ci.org/AlessandroPomponio/serverless-amazon-refbot.svg?branch=master)](https://travis-ci.org/AlessandroPomponio/serverless-amazon-refbot)
+[![Go Report Card](https://goreportcard.com/badge/github.com/AlessandroPomponio/serverless-amazon-refbot)](https://goreportcard.com/report/github.com/AlessandroPomponio/serverless-amazon-refbot)
+[![GoDoc](https://godoc.org/github.com/AlessandroPomponio/serverless-amazon-refbot?status.svg)](https://godoc.org/github.com/AlessandroPomponio/serverless-amazon-refbot)
+
 This project allows you to run a bot on the Amazon Lambda serverless platform to generate referral links.
 
 ## Configuration

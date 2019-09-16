@@ -13,8 +13,8 @@ jobs:
         go-version: 1.13
       id: go
 
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@v1
+#    - name: Check out code into the Go module directory
+#      uses: actions/checkout@v1
 
 #    - name: Get dependencies
 #      run: |
@@ -27,7 +27,10 @@ jobs:
 #            cd /home/runner/go/src/github.com/AlessandroPomponio/serverless-amazon-refbot
 #            /home/runner/go/bin/dep ensure -v
 #        fi
-    
+  
+    - name: Download code
+      run: go get -v -u github.com/AlessandroPomponio/serverless-amazon-refbot
+
     - name: Build
       run: go build -v
       

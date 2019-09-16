@@ -16,12 +16,12 @@ jobs:
     - name: Check out code into the Go module directory
       uses: actions/checkout@v1
 
-    - name: Get dependencies
-      run: |
+#    - name: Get dependencies
+#      run: |
 #        mkdir -p /home/runner/go/bin
-        mkdir -p /home/runner/go/src/github.com/AlessandroPomponio
-        go get -v -t -d ./...
-        #if [ -f Gopkg.toml ]; then
+#        mkdir -p /home/runner/go/src/github.com/AlessandroPomponio
+#        go get -v -t -d ./...
+#        if [ -f Gopkg.toml ]; then
 #            curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 #            ls -l /home/runner/go/src/github.com/AlessandroPomponio/serverless-amazon-refbot
 #            cd /home/runner/go/src/github.com/AlessandroPomponio/serverless-amazon-refbot

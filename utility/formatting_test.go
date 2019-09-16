@@ -57,7 +57,7 @@ func TestFormatRequests(t *testing.T) {
 				{
 					TelegramID: 777000,
 					URL:        "https://amzn.to/",
-					Time:       time.Unix(0, 0),
+					Time:       time.Date(1970, time.Month(1), 1, 1, 0, 0, 0, time.UTC),
 				},
 			},
 			want: "➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on Thu 1 Jan 1970 01:00:00\n\n",

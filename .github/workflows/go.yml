@@ -31,5 +31,37 @@ jobs:
     - name: Download code
       run: go get -v -u github.com/AlessandroPomponio/serverless-amazon-refbot
 
-    - name: Build
-      run: go build -v /home/runner/go/src/github.com/AlessandroPomponio/serverless-amazon-refbot      
+    - name: Build code
+      run: go build -v /home/runner/go/src/github.com/AlessandroPomponio/serverless-amazon-refbot     
+  
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Go 1.13
+      uses: actions/setup-go@v1
+      with:
+        go-version: 1.13
+      id: go
+
+#    - name: Check out code into the Go module directory
+#      uses: actions/checkout@v1
+
+#    - name: Get dependencies
+#      run: |
+#        mkdir -p /home/runner/go/bin
+#        mkdir -p /home/runner/go/src/github.com/AlessandroPomponio
+#        go get -v -t -d ./...
+#        if [ -f Gopkg.toml ]; then
+#            curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+#            ls -l /home/runner/go/src/github.com/AlessandroPomponio/serverless-amazon-refbot
+#            cd /home/runner/go/src/github.com/AlessandroPomponio/serverless-amazon-refbot
+#            /home/runner/go/bin/dep ensure -v
+#        fi
+  
+    - name: Download code
+      run: go get -v -u github.com/AlessandroPomponio/serverless-amazon-refbot
+
+    - name: Perform tests
+      run: go test -v /home/runner/go/src/github.com/AlessandroPomponio/serverless-amazon-refbot/...    

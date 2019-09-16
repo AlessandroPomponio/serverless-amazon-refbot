@@ -19,9 +19,11 @@ jobs:
     - name: Get dependencies
       run: |
         mkdir -p /home/runner/go/bin
+        mkdir -p /home/runner/go/src/github.com/AlessandroPomponio/
         go get -v -t -d ./...
         if [ -f Gopkg.toml ]; then
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+            mv /home/runner/work/serverless-amazon-refbot/ /home/runner/go/src/github.com/AlessandroPomponio/
             /home/runner/go/bin/dep ensure
         fi
     

@@ -19,7 +19,7 @@ jobs:
 
     - name: Check out code into the Go module directory
       env:
-      GITHUB_WORKSPACE: /home/runner/go/src/github.com/AlessandroPomponio/
+        GITHUB_WORKSPACE: /home/runner/go/src/github.com/AlessandroPomponio/
       uses: actions/checkout@v1
 
     - name: Build

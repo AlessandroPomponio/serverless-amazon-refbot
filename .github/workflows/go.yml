@@ -5,8 +5,6 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    env:
-      GITHUB_WORKSPACE: /home/runner/go/src/github.com/AlessandroPomponio/
       
     steps:
 
@@ -20,6 +18,8 @@ jobs:
       id: go
 
     - name: Check out code into the Go module directory
+      env:
+      GITHUB_WORKSPACE: /home/runner/go/src/github.com/AlessandroPomponio/
       uses: actions/checkout@v1
 
     - name: Build

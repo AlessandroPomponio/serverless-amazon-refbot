@@ -15,6 +15,7 @@ func GetMessageEntities(msg *tgbotapi.Message) (entities []tgbotapi.MessageEntit
 	}
 
 	return
+
 }
 
 // GetMessageText returns a text for the message.
@@ -28,4 +29,5 @@ func GetMessageText(msg *tgbotapi.Message) (text string) {
 	}
 
 	return
+
 }

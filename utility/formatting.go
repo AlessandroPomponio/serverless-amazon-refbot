@@ -26,7 +26,7 @@ func FormatRequests(requests []structs.Request) string {
 }
 
 // FormatDate formats a Time using the format
-// Mon _2 Jan 2006 15:04:05.
+// Mon 2 Jan 2006 15:04:05.
 func FormatDate(date time.Time) string {
-	return date.Format("Mon _2 Jan 2006 15:04:05")
+	return date.Format("Mon 2 Jan 2006 15:04:05")
 }

@@ -30,7 +30,7 @@ func GetRefURL(link string, referral string, b *bitly.Client) (string, error) {
 		return "", errors.Errorf("Unable to unshorten URL %s: %s", link, err)
 	}
 
-	//It has to be an amazon.it URL
+	//It has to be an AmazonDomain URL
 	if !strings.HasSuffix(parsedURL.Host, repository.AmazonDomain) {
 		return "", errors.Errorf("Amazon domain not supported for URL %s", parsedURL.String())
 	}
@@ -56,7 +56,7 @@ func cutPathAtASIN(path string) string {
 		builder.WriteString(part)
 		builder.WriteString("/")
 
-		if index > 0 && (pathSegments[index-1] == "product" || pathSegments[index-1] == "dp") {
+		if index > 0 && (pathSegments[index-1] == "product" || pathSegments[index-1] == "dp" || pathSegments[index-1] == "d") {
 			break
 		}
 

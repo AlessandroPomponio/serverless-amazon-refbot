@@ -5,6 +5,7 @@
 package utility
 
 import (
+	"fmt"
 	"testing"
 	"time"
 
@@ -46,6 +47,9 @@ func TestFormatDate(t *testing.T) {
 
 func TestFormatRequests(t *testing.T) {
 
+	referenceTime := time.Unix(0, 0)
+	formattedTime := FormatDate(referenceTime)
+
 	tests := []struct {
 		name     string
 		requests []structs.Request
@@ -57,10 +61,10 @@ func TestFormatRequests(t *testing.T) {
 				{
 					TelegramID: 777000,
 					URL:        "https://amzn.to/",
-					Time:       time.Date(1970, time.Month(1), 1, 1, 0, 0, 0, time.UTC),
+					Time:       referenceTime,
 				},
 			},
-			want: "➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on Thu 1 Jan 1970 01:00:00\n\n",
+			want: fmt.Sprintf("➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on %s\n\n", formattedTime),
 		},
 		{
 			name: "Three requests",
@@ -68,20 +72,20 @@ func TestFormatRequests(t *testing.T) {
 				{
 					TelegramID: 777000,
 					URL:        "https://amzn.to/",
-					Time:       time.Date(1970, time.Month(1), 1, 1, 0, 0, 0, time.UTC),
+					Time:       referenceTime,
 				},
 				{
 					TelegramID: 777000,
 					URL:        "https://amzn.to/",
-					Time:       time.Date(1970, time.Month(1), 1, 1, 0, 0, 0, time.UTC),
+					Time:       referenceTime,
 				},
 				{
 					TelegramID: 777000,
 					URL:        "https://amzn.to/",
-					Time:       time.Date(1970, time.Month(1), 1, 1, 0, 0, 0, time.UTC),
+					Time:       referenceTime,
 				},
 			},
-			want: "➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on Thu 1 Jan 1970 01:00:00\n\n➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on Thu 1 Jan 1970 01:00:00\n\n➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on Thu 1 Jan 1970 01:00:00\n\n",
+			want: fmt.Sprintf("➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on %s\n\n➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on %s\n\n➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on %s\n\n", referenceTime, referenceTime, referenceTime),
 		},
 		{
 			name:     "No requests",

@@ -5,7 +5,6 @@
 package utility
 
 import (
-	"fmt"
 	"testing"
 	"time"
 
@@ -21,18 +20,18 @@ func TestFormatDate(t *testing.T) {
 	}{
 		{
 			name: "Epoch",
-			date: time.Unix(0, 0),
-			want: "Thu 1 Jan 1970 01:00:00",
+			date: time.Unix(0, 0).In(time.UTC),
+			want: "Thu 1 Jan 1970 00:00:00",
 		},
 		{
 			name: "Jan 1, 2019",
-			date: time.Unix(1546300800, 0),
-			want: "Tue 1 Jan 2019 01:00:00",
+			date: time.Unix(1546300800, 0).In(time.UTC),
+			want: "Tue 1 Jan 2019 00:00:00",
 		},
 		{
 			name: "Dec 31, 2019",
-			date: time.Unix(1577750400, 0),
-			want: "Tue 31 Dec 2019 01:00:00",
+			date: time.Unix(1577750400, 0).In(time.UTC),
+			want: "Tue 31 Dec 2019 00:00:00",
 		},
 	}
 
@@ -47,9 +46,6 @@ func TestFormatDate(t *testing.T) {
 
 func TestFormatRequests(t *testing.T) {
 
-	referenceTime := time.Unix(0, 0)
-	formattedTime := FormatDate(referenceTime)
-
 	tests := []struct {
 		name     string
 		requests []structs.Request
@@ -61,10 +57,10 @@ func TestFormatRequests(t *testing.T) {
 				{
 					TelegramID: 777000,
 					URL:        "https://amzn.to/",
-					Time:       referenceTime,
+					Time:       time.Unix(0, 0).In(time.UTC),
 				},
 			},
-			want: fmt.Sprintf("➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on %s\n\n", formattedTime),
+			want: "➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on Thu 1 Jan 1970 00:00:00\n\n",
 		},
 		{
 			name: "Three requests",
@@ -72,20 +68,20 @@ func TestFormatRequests(t *testing.T) {
 				{
 					TelegramID: 777000,
 					URL:        "https://amzn.to/",
-					Time:       referenceTime,
+					Time:       time.Unix(0, 0).In(time.UTC),
 				},
 				{
 					TelegramID: 777000,
 					URL:        "https://amzn.to/",
-					Time:       referenceTime,
+					Time:       time.Unix(0, 0).In(time.UTC),
 				},
 				{
 					TelegramID: 777000,
 					URL:        "https://amzn.to/",
-					Time:       referenceTime,
+					Time:       time.Unix(0, 0).In(time.UTC),
 				},
 			},
-			want: fmt.Sprintf("➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on %s\n\n➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on %s\n\n➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on %s\n\n", referenceTime, referenceTime, referenceTime),
+			want: "➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on Thu 1 Jan 1970 00:00:00\n\n➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on Thu 1 Jan 1970 00:00:00\n\n➡️ <a href=\"tg://user?id=777000\">777000</a> requested https://amzn.to/ on Thu 1 Jan 1970 00:00:00\n\n",
 		},
 		{
 			name:     "No requests",

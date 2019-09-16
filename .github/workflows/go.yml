@@ -5,7 +5,13 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    env:
+      GITHUB_WORKSPACE: /home/runner/go/src/github.com/AlessandroPomponio/
+      
     steps:
+
+    - name: Create directory
+      run: mkdir -p /home/runner/go/src/github.com/AlessandroPomponio
 
     - name: Set up Go 1.13
       uses: actions/setup-go@v1

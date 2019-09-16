@@ -5,30 +5,6 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-      
-    steps:
-
-    - name: Create directory
-      run: mkdir -p /home/runner/go/src/github.com/AlessandroPomponio
-
-    - name: Set up Go 1.13
-      uses: actions/setup-go@v1
-      with:
-        go-version: 1.13
-      id: go
-
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@v1
-      
-    - name: Move repository to GOPATH
-      run: mv /home/runner/work/serverless-amazon-refbot/serverless-amazon-refbot /home/runner/go/src/github.com/AlessandroPomponio
-
-    - name: Build
-      run: go build -v /home/runner/go/src/github.com/AlessandroPomponio/serverless-amazon-refbot
-      
-  test:
-    name: Test
-    runs-on: ubuntu-latest
     steps:
 
     - name: Set up Go 1.13
@@ -39,6 +15,14 @@ jobs:
 
     - name: Check out code into the Go module directory
       uses: actions/checkout@v1
+
+    - name: Get dependencies
+      run: |
+        go get -v -t -d ./...
+        if [ -f Gopkg.toml ]; then
+            curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+            dep ensure
+        fi
     
-    - name: Test
-      run: go test -v ./...
+    - name: Build
+      run: go build -v ./...

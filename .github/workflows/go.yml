@@ -23,8 +23,8 @@ jobs:
         go get -v -t -d ./...
         if [ -f Gopkg.toml ]; then
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-            mv /home/runner/work/serverless-amazon-refbot/ /home/runner/go/src/github.com/AlessandroPomponio/
-            /home/runner/go/bin/dep ensure
+            mv /home/runner/work/serverless-amazon-refbot/* /home/runner/go/src/github.com/AlessandroPomponio/
+            /home/runner/go/bin/dep ensure -v
         fi
     
     - name: Build

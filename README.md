@@ -74,6 +74,7 @@ This project allows you to run a bot on the Amazon Lambda serverless platform to
 7. Make sure that `Lambda Proxy Integration` is **disabled**.
 8. Choose the appropriate region and write name of the function you've created in the `Lambda function` field.
 9. Make sure that in the `Body mapping templates` of the function, `When there are no templates defined (recommended)"` is selected.
+10. Deploy the API by choosing the option from the dropdown menu. This way you'll be given the URL we'll use to set up the bot's webhooks.
 
 ## Compiling
 

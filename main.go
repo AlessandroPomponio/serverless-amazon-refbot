@@ -8,7 +8,7 @@ import (
 	"log"
 
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/go-telegram-bot-api/telegram-bot-api"
+	"github.com/go-telegram-bot-api/telegram-bot-api/v5"
 
 	"github.com/AlessandroPomponio/serverless-amazon-refbot/commands"
 	"github.com/AlessandroPomponio/serverless-amazon-refbot/messages"

@@ -27,9 +27,6 @@ jobs:
             cd /home/runner/go/src/github.com/AlessandroPomponio/serverless-amazon-refbot
             /home/runner/go/bin/dep ensure -v
         fi
-  
-#    - name: Download code
-#      run: go get -v -u github.com/AlessandroPomponio/serverless-amazon-refbot
 
     - name: Build code
       run: go build -v .    
@@ -59,9 +56,6 @@ jobs:
             cd /home/runner/go/src/github.com/AlessandroPomponio/serverless-amazon-refbot
             /home/runner/go/bin/dep ensure -v
         fi
-  
-#    - name: Download code
-#      run: go get -v -u github.com/AlessandroPomponio/serverless-amazon-refbot
 
     - name: Perform tests
       run: go test -v ./...    

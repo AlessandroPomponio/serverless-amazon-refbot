@@ -17,6 +17,10 @@ import (
 // FormatRequests formats a slice of requests.
 func FormatRequests(requests []structs.Request) string {
 
+	if len(requests) == 0 {
+		return "No requests"
+	}
+
 	builder := strings.Builder{}
 
 	for _, request := range requests {

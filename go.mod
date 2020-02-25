@@ -9,5 +9,4 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/retgits/bitly v0.0.0-20190406234342-3bba0c6aad8f
 	github.com/rs/xid v1.2.1
-	github.com/zpnk/go-bitly v0.0.0-20170609220507-2da97f724d1d
 )

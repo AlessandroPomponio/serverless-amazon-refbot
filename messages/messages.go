@@ -12,9 +12,9 @@ import (
 	"strings"
 	"unicode/utf16"
 
-	"github.com/go-telegram-bot-api/telegram-bot-api"
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/pkg/errors"
-	"github.com/zpnk/go-bitly"
+	"github.com/retgits/bitly/client"
 
 	"github.com/AlessandroPomponio/serverless-amazon-refbot/repository"
 	"github.com/AlessandroPomponio/serverless-amazon-refbot/urlwork"
@@ -35,7 +35,8 @@ func HandleMessage(msg *tgbotapi.Message, bot *tgbotapi.BotAPI) (returnedURLs []
 		return
 	}
 
-	bitlyClient := bitly.New(repository.BitlyAPIKey)
+	// Generate a new Bitly client
+	bitlyClient := client.NewClient().WithAccessToken(repository.BitlyAPIKey)
 	for _, url := range urls {
 
 		refurl, err := urlwork.GetRefURL(url, repository.ReferralID, bitlyClient)

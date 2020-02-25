@@ -12,7 +12,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/go-telegram-bot-api/telegram-bot-api"
+	"github.com/go-telegram-bot-api/telegram-bot-api/v5"
 
 	"github.com/AlessandroPomponio/serverless-amazon-refbot/persistence"
 	"github.com/AlessandroPomponio/serverless-amazon-refbot/repository"

@@ -8,7 +8,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
 func unmarshalTestMessage(rawJSON string, t *testing.T) *tgbotapi.Message {

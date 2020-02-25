@@ -13,13 +13,14 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/zpnk/go-bitly"
+	"github.com/retgits/bitly/client"
+	"github.com/retgits/bitly/client/bitlinks"
 
 	"github.com/AlessandroPomponio/serverless-amazon-refbot/repository"
 )
 
 //GetRefURL tries to generate an Amazon referral link.
-func GetRefURL(link string, referral string, b *bitly.Client) (string, error) {
+func GetRefURL(link string, referral string, b *client.Client) (string, error) {
 
 	parsedURL, err := url.Parse(link)
 	if err != nil {
@@ -45,7 +46,9 @@ func GetRefURL(link string, referral string, b *bitly.Client) (string, error) {
 	parsedURL.Path = cutPathAtASIN(parsedURL.Path)
 	parsedURL.RawQuery = "&tag=" + referral
 	parsedURL.Fragment = ""
-	return shortenURL(parsedURL.String(), b)
+
+	bLinks := bitlinks.New(b)
+	return shortenURL(parsedURL.String(), bLinks)
 
 }
 
@@ -73,15 +76,21 @@ func cutPathAtASIN(path string) string {
 }
 
 // shortenURL shortens a URL using Bitly.
-func shortenURL(u string, b *bitly.Client) (string, error) {
+func shortenURL(u string, b *bitlinks.Bitlinks) (string, error) {
 
-	shortURL, err := b.Links.Shorten(u)
+	toShort := bitlinks.ShortenRequest{
+		GroupGUID: "",
+		LongURL:   u,
+		Domain:    "bit.ly",
+	}
+
+	shortURL, err := b.ShortenLink(&toShort)
 	if err != nil {
 		err = errors.Errorf("Error while shortening the URL: %s", err)
 		return "", err
 	}
 
-	return shortURL.URL, nil
+	return shortURL.Link, nil
 
 }
 

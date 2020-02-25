@@ -32,7 +32,7 @@ jobs:
 #      run: go get -v -u github.com/AlessandroPomponio/serverless-amazon-refbot
 
     - name: Build code
-      run: go build -v /home/runner/go/src/github.com/AlessandroPomponio/serverless-amazon-refbot     
+      run: go build -v .    
   
   test:
     name: Test
@@ -64,4 +64,4 @@ jobs:
 #      run: go get -v -u github.com/AlessandroPomponio/serverless-amazon-refbot
 
     - name: Perform tests
-      run: go test -v /home/runner/go/src/github.com/AlessandroPomponio/serverless-amazon-refbot/...    
+      run: go test -v ./...    

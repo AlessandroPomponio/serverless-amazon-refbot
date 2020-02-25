@@ -86,7 +86,7 @@ func TestFormatRequests(t *testing.T) {
 		{
 			name:     "No requests",
 			requests: []structs.Request{},
-			want:     "",
+			want:     "No requests",
 		},
 	}
 

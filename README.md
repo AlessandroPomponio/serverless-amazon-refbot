@@ -8,6 +8,15 @@ This project allows you to run a bot on the Amazon Lambda serverless platform to
 
 ## Configuration
 
+### Getting a Bitly API key
+
+1. Go to Bitly's website [bitly.com](https://bitly.com) and login or create an account.
+2. Click on your account name in the top right and choose `Group settings`.
+3. Next up, choose `Advanced settings` and click on `API support`.
+4. In the second paragraph you'll find a link to `User settings`, click on it.
+5. Input your password and click on `Generate token` at the bottom.
+6. Save this token, we'll need it later.
+
 ### DynamoDB configuration
 
 1. Go to DynamoDB's web page: [https://console.aws.amazon.com/dynamodb/](https://console.aws.amazon.com/dynamodb/)
